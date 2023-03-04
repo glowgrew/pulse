@@ -26,10 +26,8 @@ const pool = new Pool({
 const app = express();
 app.use(bodyParser.json());
 
-// Endpoint to create new statistics
 app.post("/stats", async (req: Request<{}, CreateStatsRequest>, res: Response) => {
     try {
-        console.log(req.body);
         const {username, stat_name, value, timestamp} = req.body;
 
         const query = "INSERT INTO player_stats (username, stat_name, value, timestamp) VALUES ($1, $2, $3, $4)";
